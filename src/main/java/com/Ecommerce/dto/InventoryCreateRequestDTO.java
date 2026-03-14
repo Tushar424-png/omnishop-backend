@@ -17,6 +17,7 @@ public class InventoryCreateRequestDTO {
     private Integer quantity;
 
     private Boolean active;
+    private Integer reorderLevel = 5;
 
     public Boolean getActive() {
         return active;
@@ -49,6 +50,14 @@ public class InventoryCreateRequestDTO {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
+
+	public Integer getReorderLevel() {
+		return reorderLevel;
+	}
+
+	public void setReorderLevel(Integer reorderLevel) {
+		this.reorderLevel = reorderLevel;
+	}
 
 
 }

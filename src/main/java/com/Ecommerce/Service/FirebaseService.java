@@ -1,8 +1,8 @@
 package com.Ecommerce.Service;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import com.google.auth.oauth2.GoogleCredentials;
@@ -17,9 +17,10 @@ public class FirebaseService {
     @PostConstruct
     public void init() throws Exception {
 
+        String firebaseConfig = System.getenv("FIREBASE_CONFIG");
+
         InputStream serviceAccount =
-                new ClassPathResource("omnishop-66d18-firebase-adminsdk-fbsvc-673bc8edc0.json")
-                        .getInputStream();
+                new ByteArrayInputStream(firebaseConfig.getBytes());
 
         FirebaseOptions options = FirebaseOptions.builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))

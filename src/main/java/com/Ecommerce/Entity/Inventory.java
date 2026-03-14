@@ -25,6 +25,7 @@ public class Inventory {
     @Column(nullable = false)
     private InventoryStatus status;
 
+    @Column(name = "reorder_level")
     private Integer reorderLevel = 5;
 
     private Boolean active;
@@ -47,11 +48,14 @@ public class Inventory {
 
 
     public void updateStatus() {
+
         if (quantity == null || quantity <= 0) {
             this.status = InventoryStatus.OUT_OF_STOCK;
-        } else if (quantity <= reorderLevel) {
+        } 
+        else if (reorderLevel != null && quantity <= reorderLevel) {
             this.status = InventoryStatus.LOW_STOCK;
-        } else {
+        } 
+        else {
             this.status = InventoryStatus.IN_STOCK;
         }
     }

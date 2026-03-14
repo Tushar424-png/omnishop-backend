@@ -38,12 +38,13 @@ public class Inventoryservice {
 
         // Native save call karo (CAST ke saath)
         inventoryRepo.saveWithVector(
-            request.getProductId(),
-            request.getProductName(),
-            request.getQuantity(),
-            status,
-            request.getActive() != null ? request.getActive() : true,
-            vector
+                request.getProductId(),
+                request.getProductName(),
+                request.getQuantity(),
+                status,
+                request.getReorderLevel() != null ? request.getReorderLevel() : 5,
+                request.getActive() != null ? request.getActive() : true,
+                vector
         );
 
         Inventory saved = inventoryRepo.findByProductId(request.getProductId()).orElseThrow();

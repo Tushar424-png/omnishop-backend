@@ -24,15 +24,16 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long> {
     // Naya update: Casting ke saath manual save
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO inventory (product_id, product_name, quantity, status, active, embedding) " +
-                   "VALUES (:productId, :productName, :quantity, :status, :active, CAST(:embedding AS vector))", 
+    @Query(value = "INSERT INTO inventory (product_id, product_name, quantity, status, reorder_level, active, embedding) " +
+                   "VALUES (:productId, :productName, :quantity, :status, :reorderLevel, :active, CAST(:embedding AS vector))",
            nativeQuery = true)
     void saveWithVector(
-        @Param("productId") Long productId, 
-        @Param("productName") String productName, 
-        @Param("quantity") Integer quantity, 
-        @Param("status") String status, 
-        @Param("active") Boolean active, 
+        @Param("productId") Long productId,
+        @Param("productName") String productName,
+        @Param("quantity") Integer quantity,
+        @Param("status") String status,
+        @Param("reorderLevel") Integer reorderLevel,
+        @Param("active") Boolean active,
         @Param("embedding") float[] embedding
     );
 
