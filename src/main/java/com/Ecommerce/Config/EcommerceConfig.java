@@ -48,7 +48,7 @@ public class EcommerceConfig {
                     "/api/gemini/ask",
                     "/Inventory/add",
                     "/user/getone/**",
-                    "api/gemini/ask",
+                    "/api/gemini/ask",
                     "/products/add"
                 ).permitAll()
 
@@ -83,7 +83,7 @@ public class EcommerceConfig {
 
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+        configuration.setAllowedOrigins(List.of("*"));
         configuration.setAllowedMethods(
                 List.of("GET","POST","PUT","DELETE","OPTIONS")
         );
