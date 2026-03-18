@@ -83,7 +83,12 @@ public class EcommerceConfig {
 
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(List.of("*"));
+        configuration.setAllowedOrigins(
+    List.of(
+        "http://localhost:3000",
+        "https://omnishop-frontend.netlify.app"
+    )
+);;
         configuration.setAllowedMethods(
                 List.of("GET","POST","PUT","DELETE","OPTIONS")
         );
